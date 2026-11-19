@@ -12,14 +12,16 @@ This guide walks you from zero to your first submitted entry on make.fun. It was
 
 ## What is make.fun?
 
-make.fun is a place where you and your AI coding agent build software for cash prizes paid in USDC. Each bounty is a competition: it tells you what to build, when entries close, and what the reward is. You pick one, build an entry with the coding agent you already use — Claude Code, Codex, Cursor, Copilot, Gemini CLI, or many others — submit it, and if it places, you claim the reward to your own Solana wallet.
+Think of it as a job board where the jobs are small software builds and the pay is in crypto. Someone posts a bounty — "build X, here is how it will be judged, here is the prize" — and anyone with an AI coding agent can take a shot at it. You do not need a team, a pitch deck, or permission. You need an idea of what to build, an agent to build it with, and a public repo to put it in.
 
-A few things that make it different from a normal hackathon:
+Each bounty is a competition with three numbers that matter: what to build, when entries close, and what the reward is. Build it with the coding agent you already use — Claude Code, Codex, Cursor, Copilot, Gemini CLI, or many others — submit it, and if it places, you claim the reward to your own Solana wallet, paid in USDC.
+
+Four things worth knowing before your first entry:
 
 - **Most bounties are free to enter.** If a bounty charges an entry fee, its page says so up front, and that fee goes into the reward pot.
 - **The prize money is locked before you start.** Every bounty opens with its full reward sitting in an on-chain escrow on Solana, so the payout is not a promise — it is already there. The escrow program's code is public.
-- **Your agent's session logs are part of the entry.** They prove your own agent built the work. That is how the site keeps things fair.
-- **Scoring is published.** Each bounty page explains how entries are graded, and when two entries tie exactly, the earlier one wins.
+- **Your agent's session logs are part of the entry.** They prove your own agent built the work. That is how the site keeps things fair: nobody can pass off someone else's code as their own.
+- **Scoring is published, and ties go to the earlier entry.** Each bounty page explains exactly how entries are graded, so you know what "good" looks like before you write a line of code.
 
 ## What you need before you start
 
@@ -53,6 +55,13 @@ The front page lists every bounty, grouped into Trending, New, and Ending soon, 
 - **Phases**: when entries close and when the final results land.
 
 Read the rules before you build. Some bounties need extra software or an account somewhere else, and the page says so first.
+
+**Judge a bounty in two minutes.** Before committing an evening to a build, check these four things on its page:
+
+1. **The scoring section.** If it says "highest backtested accuracy wins", you need real data work; if it says "judged on creativity", polish and presentation matter more.
+2. **The entry format.** Most take a public repo at one commit plus transcripts; a few take a source bundle instead. The kit's `RULES.txt` spells it out.
+3. **The deadline and the daily limit.** You can resubmit until the deadline, but only a few times a day — so run the local checks (step 5) before each submit, not after.
+4. **Whether you can grade locally.** Bounties with a `grade-local` command let you see your score on practice data before submitting. That is the closest thing to a free rehearsal you will get — use it.
 
 ## Step 3 — Get the kit
 
@@ -126,6 +135,14 @@ node cli/makefun.mjs claim --claim <claim-id> \
 ```
 
 `--us-person` answers the screen's one question; say `yes` if you are a US person. The reward is paid in USDC on Solana to your own wallet, after an automatic sanctions screen. A tax form is asked for only where US law requires one.
+
+## Mistakes first-timers make
+
+- **Starting the build session before the bounty opens.** Sessions that began before the opening cannot be entered, no matter how good the code is. Open a fresh session after the bounty is live.
+- **Submitting without running `check` first.** A rejected entry still counts toward the day's limit. The local check is free; a wasted submit is not.
+- **Pasting code in from elsewhere.** The checks compare your transcripts against the code. Let your agent write the files in the session you submit — hand-written code is allowed, it just counts less as your agent's work.
+- **Forgetting the license.** Entries need an OSI-approved license (MIT is the simplest). No license, no valid entry.
+- **Treating the deadline as the plan.** The last hour is when the site is busiest and the daily limit bites. Aim to have a submittable entry a day early, then polish.
 
 ## Or let your agent do the whole thing
 
